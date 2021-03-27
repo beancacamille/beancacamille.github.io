@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Personal website">
+        <meta name="keywords" content="personal website, portfolio, portfolio website, beanca serdena, beanca camille serdena">
+        <meta name="author" content="Beanca Camille Serdena">
+        <title>Beanca Camille Serdena</title>
+
+        <link rel="icon" href="favicon.png">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abel&family=Exo:wght@600&family=Marck+Script&family=Rancho&display=swap">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css">
+        
+        <script src="https://unpkg.com/scrollreveal@4"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="js/script.js" defer></script>
+    </head>
+    <body translate="no">
+        <div id="vue">
+            <nav id="nav" class="animate__animated">
+                <ul id="nav-content" class="animate__animated">
+                    <li><a class="nav-link" @click="moveTo(0)">Intro</a></li>
+                    <li><a class="nav-link" @click="moveTo(1)">About</a></li>
+                    <li><a class="nav-link" @click="moveTo(2)">Projects</a></li>
+                    <li><a class="nav-link" @click="moveTo(3)">Contact</a></li>
+                </ul>
+            </nav>
+            <a id="nav-icon" class="icon" onclick="showNav()">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </a>
+            <main>
+                <section id="intro">
+                    <div class="container intro-container animate__animated animate__fadeIn">
+                        <img class="pic animate__animated animate__bounceInDown" src="images/bea.png" alt="Beanca Camille Serdena">
+                        <span class="animate__animated animate__flipInX">
+                            <h1>Beanca Camille Serdena</h1>
+                            <span class="cursive">BSc Computer Science Graduate</span>
+                        </span>
+                    </div>
+                </section>
+                <section id="about">
+                    <div class="container">
+                        <h2 class="reveal">&mdash; About &mdash;</h2>
+                        <div class="about-para reveal">
+                            <h3>Know more about me</h3>
+                            <p>
+                                Hi, I'm Beanca Camille Serdena and I recently graduated from Middlesex University, London.
+                            </p>
+                            <p>
+                                I previously studied BS in Applied Mathematics with Information Technology for 2 years 
+                                in Far Eastern University, Philippines. I had no prior coding experience but as I 
+                                learned more about programming, I discovered my passion for it.
+                            </p>
+                            <p>
+                                Over 6 years ago, I moved to the UK and decided to continue my studies but due to 
+                                the differences in education standards, I had to start all over. The process of getting 
+                                into a university was challenging at first but I persevered and here I am now, I 
+                                finally got my degree. The journey might have been long but it was worth it. 
+                                <strong>I believe that learning is fun and it never ends.</strong>
+                            </p>
+                            <p class="italic">
+                                When I'm not coding or learning, I'm usually reading novels or manga, watching anime, or 
+                                playing games on my pc, phone, or switch. I love mystery and action genre and I prefer 
+                                role-playing games.
+                            </p>
+                        </div>
+                        <div class="skills reveal">
+                            <h3>What I know so far</h3>
+                            <div class="skill">
+                                <i class="devicon-html5-plain"></i>
+                                <span class="skill-name">HTML5</span>
+                            </div>
+                            <div class="skill">
+                                <i class="devicon-css3-plain"></i>
+                                <span class="skill-name">CSS3</span>
+                            </div>
+                            <div class="skill">
+                                <i class="devicon-javascript-plain"></i>
+                                <span class="skill-name">JavaScript</span>
+                            </div>
+                            <div class="skill">
+                                <i class="devicon-nodejs-plain"></i>
+                                <span class="skill-name">Node.js</span>
+                            </div>
+                            <div class="skill">
+                                <i class="devicon-vuejs-plain"></i>
+                                <span class="skill-name">Vue.js</span>
+                            </div>
+                            <div class="skill">
+                                <i class="devicon-php-plain"></i>
+                                <span class="skill-name">PHP</span>
+                            </div>
+                            <div class="skill">
+                                <i class="devicon-java-plain"></i>
+                                <span class="skill-name">Java</span>
+                            </div>
+                            <div class="skill">
+                                <i class="devicon-amazonwebservices-original"></i>
+                                <span class="skill-name">AWS</span>
+                            </div>
+                            <div class="skill">
+                                <i class="devicon-mysql-plain"></i>
+                                <span class="skill-name">MySQL</span>
+                            </div>
+                            <div class="skill">
+                                <i class="devicon-mongodb-plain"></i>
+                                <span class="skill-name">MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="projects">
+                    <div class="container projects-container">
+                        <h2 class="reveal">&mdash; Here are some of my projects &mdash;</h2>
+                        <div class="projects">
+                            <div class="project sub-container reveal" v-for="project in projects">
+                                <div class ="project-image" @click="showModal(project.id)">
+                                    <img :src="project.src" :alt="project.name">
+                                </div>
+                                <div class="project-details">
+                                    <h3>{{ project.name }}</h3>
+                                    <p>{{ project.description }}</p>
+                                    <h4>What I used</h4>
+                                    <p>{{ project.used }}</p>
+                                </div>
+                            </div>
+                            <div id="pic-modal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close" @click="closeModal()">&times;</span>
+                                    <img id="pic-preview" src="" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="contact">
+                    <div class="container reveal">
+                        <h2>&mdash; Let 's connect ! &mdash;</h2>
+                        <div class="social-media">
+                            <p>
+                                Connect with me on LinkedIn, follow me on Instagram
+                            </p>
+                            <div class="social-links">
+                                <a href="https://www.linkedin.com/in/beancaserdena/" target="_blank">
+                                    <div class="social-container"><img src="images/linkedin_icon.png" alt="LinkedIn icon"></div></a>
+                                <a href="https://www.instagram.com/beancaserdena/" target="_blank">
+                                    <div class="social-container"><img src="images/instagram_icon.png" alt="Instagram icon"></div></a>
+                            </div>
+                            <p class="discord">
+                                or add me on Discord <img src="images/discord_icon.png" alt="Discord icon">Hakai#3333
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="credits">
+                            <p>
+                                This website was coded by hand using <a href="https://code.visualstudio.com/" target="_blank">
+                                Visual Studio Code</a> and built with <a href="https://animate.style/" target="_blank">
+                                Animate.css</a> and <a href="https://scrollrevealjs.org/" target="_blank">ScrollReveal</a>. 
+                                The icons are from <a href="https://devicons.github.io/devicon/" target="_blank">
+                                Devicon</a> and <a href="https://www.flaticon.com/" target="_blank">Flaticon</a>.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </body>
+</html>
